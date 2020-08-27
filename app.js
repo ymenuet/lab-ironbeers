@@ -34,16 +34,9 @@ app.get('/random-beers', async(req, res) => {
     res.render('random-beers', randomBeer[0])
 });
 
-async function singleBeerPages() {
-    const beersFromApi = await punkAPI.getBeers();
-    beersFromApi.forEach(beer => {
-        const id = beer.id;
-        app.get(`/beers/beer-${id}`, (req, res) => {
-            res.render('random-beers', beer)
-        })
-    })
-}
-
-singleBeerPages();
+app.get('/beers/:id', async(req, res) => {
+    const beer = await punkAPI.getBeer(req.params.id)
+    res.render('random-beers', beer[0])
+})
 
 app.listen(3000, () => console.log('🏃‍ on port 3000'));

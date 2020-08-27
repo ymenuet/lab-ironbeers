@@ -96,7 +96,7 @@ h2 {
 }
 
 #full-page-beers {
-    padding-top: 100px;
+    padding: 100px 0;
     display: flex;
 }
 
